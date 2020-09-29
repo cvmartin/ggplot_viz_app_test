@@ -1,0 +1,17 @@
+install.packages(c(
+  "config",
+  "dplyr",
+  "DT",
+  "ggplot2",
+  "purrr",
+  "readr",
+  "readxl",
+  "rlang",
+  "shiny",
+  "shinyAce",
+  "shinydashboard",
+  "shinyjs",
+  "shinyWidgets",
+  "stringr",
+  "tools"
+))
