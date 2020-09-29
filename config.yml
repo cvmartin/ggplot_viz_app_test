@@ -1,0 +1,79 @@
+default:
+  datasets:
+    Data Science - time spent: !expr expr(readRDS("preloaded/data_science_time_spent.RDS"))
+    weight_height: !expr expr(readRDS("preloaded/weight_height.RDS"))
+    tooth_growth: !expr expr(readRDS("preloaded/tooth_growth2.RDS"))
+    VDB ChargePole funnel stages (fake): !expr expr(readRDS("preloaded/vdb_charge_pole_funnel_stages_fake.RDS"))
+    VDB sales (fake): !expr expr(readRDS("preloaded/vdb_sales_fake.RDS"))
+    hours_worked_per_week: !expr expr(readRDS("preloaded/hwork_per_week.RDS"))
+    challenger: !expr expr(readRDS("preloaded/challenger.RDS"))
+    vdb_month_sales: !expr expr(readRDS("preloaded/vdb_month_sales.RDS"))
+    who_covid: !expr expr(readRDS("preloaded/who_covid.RDS"))
+    letters_group: !expr expr(readRDS("preloaded/letters_group.RDS"))
+    economics: !expr expr(ggplot2::economics)
+    Housing sales in texas: !expr expr(ggplot2::txhousing)
+    diamonds: !expr expr(ggplot2::diamonds)
+    iris: !expr expr(datasets::iris)
+    mtcars: !expr expr(readRDS("preloaded/mtcars2.RDS"))
+    datasaurus: !expr expr(readRDS("preloaded/datasaurus.RDS"))
+  
+  choices:
+    geoms:
+      Two variables (X continuous, Y continuous):
+        Scatter: "geom_point"
+        Line: "geom_line"
+        Area: "geom_area"
+      Two variables (X categorical, Y continuous):
+        Column: "geom_col"
+        Violin: "geom_violin"
+        Boxplot: "geom_boxplot" 
+      One variable (X):
+        Histogram: "geom_histogram"
+    positions: ["stack", "dodge", "identity", "fill"]
+    regression: ["lm", "loess"]
+    facets:
+      grid: "facet_grid" 
+      wrap: "facet_wrap"
+    coordinates:
+      cartesian: "coord_cartesian"
+      flipped: "coord_flip"
+      polar: "coord_polar"
+    coordinates_axis:
+      X axis: "x"
+      Y axis: "y"
+    themes:
+      grey: "theme_grey"
+      bw: "theme_bw"
+      classic: "theme_classic"
+      dark: "theme_dark"
+      light: "theme_light"
+      line_draw: "theme_linedraw"
+      minimal: "theme_minimal"
+    legend_positions: ["right", "left", "top", "bottom", "none"]
+        
+  specials:
+    geoms:
+      require_fill: ["geom_col", "geom_area", "geom_violin", "geom_histogram", "geom_boxplot"]
+      deactivate_y: ["geom_histogram"]
+      allow_bins: ["geom_histogram"]
+      allow_position: ["geom_col", "geom_histogram", "geom_area"]
+      allow_size: ["geom_point", "geom_line"]
+      allow_shape: ["geom_point"]
+      allow_regression: ["geom_point", "geom_line", "geom_col"]
+    coord:
+      allow_origin: ["coord_cartesian", "coord_flip"]
+      allow_thetha: ["coord_polar"]
+  
+  palettes:
+    rcolorbrewer:
+      categorical: !expr row.names(RColorBrewer::brewer.pal.info)[RColorBrewer::brewer.pal.info$category == "qual"]
+      diverging: !expr row.names(RColorBrewer::brewer.pal.info)[RColorBrewer::brewer.pal.info$category == "div"]
+      sequential: !expr row.names(RColorBrewer::brewer.pal.info)[RColorBrewer::brewer.pal.info$category == "seq"]
+    custom:
+      default:
+        ggplot2 default: ~
+      categorical:
+        colorblind: !expr c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", 
+          "#0072B2", "#D55E00", "#CC79A7")
+        vandebron: !expr c("#323c47", "#fcb818", "#25b7ea", "#53b951", "#ee4c7c", 
+          "#dfe6ec", "#387f36", "#fc6c18", "#727271")

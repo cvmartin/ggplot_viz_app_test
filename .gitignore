@@ -1,0 +1,6 @@
+rsconnect/
+*.pdf
+*.html
+*.xlsx
+.Rproj.user
+.Rhistory
